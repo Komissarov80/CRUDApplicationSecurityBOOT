@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>user_list</title>
@@ -14,25 +14,27 @@
             <tr>
                 <th>Id</th>
                 <th>name</th>
-                <th>surname</th>
-                <th>age</th>
+                <th>password</th>
+                <th>roles</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="user : ${users}">
                 <td th:text="${user.id}"></td>
                 <td th:text="${user.name}"></td>
-                <td th:text="${user.surname}"></td>
-                <td th:text="${user.age}"></td>
-                <td><a th:href="@{user-update/{id}(id=${user.id})}">Edit</a></td>
+                <td th:text="${user.password}"></td>
+                <td th:text="${user.roles}"></td>
+                <td><a th:href="@{/admin/user-update/{id}(id=${user.id})}">Edit</a></td>
                 <td>
-                <form th:method="DELETE" th:action="@{/delete/{id}(id=${user.getId()})}"><input type="submit" value="Delete"/></form>
+                <form th:method="DELETE" th:action="@{/admin/delete/{id}(id=${user.getId()})}"><input type="submit" value="Delete"/></form>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
-    <p><a href="/user-create">Create user</a></p>
+    <p><a href="/logout">Logout</a></p>
+    <p><a href="/admin/user-create">Create user</a></p>
+    <p><a href="/admin/roles">Roles</a></p>
 </div>
 </body>
 </html>
