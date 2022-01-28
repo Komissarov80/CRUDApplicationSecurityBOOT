@@ -1,6 +1,5 @@
 package org.exampels.Services;
 
-import org.exampels.dao.DaoRole;
 import org.exampels.dao.DaoUser;
 import org.exampels.model.User;
 import org.hibernate.Hibernate;
@@ -36,12 +35,12 @@ public class UserServicesImpl implements UserServices, UserDetailsService {
 
     @Override
     public void editUser(User user) {
-    daoUser.editUser(user);
+        daoUser.editUser(user);
     }
 
     @Override
     public void deletUser(Long id) {
-    daoUser.deletUser(id);
+        daoUser.deletUser(id);
     }
 
     @Override

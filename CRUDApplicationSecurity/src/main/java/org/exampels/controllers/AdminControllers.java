@@ -47,14 +47,12 @@ public class AdminControllers {
     // удалить юзера из главной таблицы
     @PostMapping("/delete/{id}")
     public String deletUser(@PathVariable("id") Long id) {
-        System.out.println("in method Post delet");
         userServices.deletUser(id);
         return "redirect:/admin/users";
     }
     // удалить юзера из url строки
     @GetMapping("/delete/{id}")
     public String deleteUser(@PathVariable("id") Long id) {
-        System.out.println("in method Get delet");
         userServices.deletUser(id);
         return "redirect:/admin/users";
     }
