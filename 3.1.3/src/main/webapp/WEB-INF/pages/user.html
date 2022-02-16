@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://springframework.org/security/tags">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+<div class="p-3 mb-3 bg-dark text-white">
+    <strong><span th:text="${user.getUsername()}"></span></strong>
+    <span>with roles:</span>
+    <span th:text="${user.getRolesString()}"></span>
+    <div style="text-align: right">
+        <a th:href="@{/logout}">Logout</a>
+    </div>
+</div>
+<div class="d-flex flex-row">
+    <div class="w-25 p-3">
+        <ul class="nav nav-pills flex-column">
+            <div sec:authorize="hasRole('ADMIN')">
+                <a href="/admin" class="nav-item nav-link active">
+                    Admin
+                </a>
+            </div>
+            <a href="/user" class="nav-item nav-link">
+                User
+            </a>
+        </ul>
+    </div>
+    <div class="w-75 p-3 bg-light">
+        <h1>User information-page</h1>
+        <div class="card">
+            <div class="card-body bg-light">
+            <h3>About user</h3>
+            </div>
+            <div class="card-body bg-white">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Surname</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Roles</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="bg-light">
+                    <td th:text="${user.getId()}"></td>
+                    <td th:text="${user.getName()}"></td>
+                    <td th:text="${user.getLastName()}"></td>
+                    <td th:text="${user.getAge()}"></td>
+                    <td th:text="${user.getUsername()}"></td>
+                    <td th:text="${user.getRolesString()}"></td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+</div>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
